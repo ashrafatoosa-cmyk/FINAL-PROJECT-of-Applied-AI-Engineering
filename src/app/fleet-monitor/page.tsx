@@ -147,7 +147,7 @@ export default function FleetMonitor() {
 
         {/* Live Gauges */}
         <div className="grid grid-cols-2 gap-3">
-          <div className={`p-4 rounded-2xl border transition-colors ${(latestData?.engine_temp ?? 0) > 100 ? 'bg-red-500/20 border-red-500/50' : 'bg-white/5 border-white/10'}`}>
+          <div className={`p-4 rounded-2xl border transition-colors ${((latestData?.engine_temp ?? 0) > 100) ? 'bg-red-500/20 border-red-500/50' : 'bg-white/5 border-white/10'}`}>
             <div className="flex items-center gap-2 text-white/50 mb-2">
               <ThermometerSun size={14} />
               <span className="text-[9px] font-black uppercase tracking-widest">Engine Temp</span>
@@ -157,7 +157,7 @@ export default function FleetMonitor() {
             </p>
           </div>
           
-          <div className={`p-4 rounded-2xl border transition-colors ${(latestData?.vibration_hz ?? 0) > 40 ? 'bg-red-500/20 border-red-500/50' : 'bg-white/5 border-white/10'}`}>
+          <div className={`p-4 rounded-2xl border transition-colors ${((latestData?.vibration_hz ?? 0) > 40) ? 'bg-red-500/20 border-red-500/50' : 'bg-white/5 border-white/10'}`}>
             <div className="flex items-center gap-2 text-white/50 mb-2">
               <Activity size={14} />
               <span className="text-[9px] font-black uppercase tracking-widest">Axle Vibration</span>
@@ -180,7 +180,7 @@ export default function FleetMonitor() {
           
           <div className="w-full h-3 bg-white/10 rounded-full overflow-hidden">
             <div 
-              className={`h-full transition-all duration-1000 ${(latestData?.status ?? '') === 'warning' ? 'bg-red-500 w-[15%]' : 'bg-emerald-500 w-[85%]'}`} 
+              className={`h-full transition-all duration-1000 ${((latestData?.status ?? '') === 'warning') ? 'bg-red-500 w-[15%]' : 'bg-emerald-500 w-[85%]'}`} 
             />
           </div>
           <div className="flex justify-between mt-2 text-[9px] font-bold text-white/40 uppercase tracking-widest">
