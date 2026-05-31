@@ -85,13 +85,13 @@ sequenceDiagram
 
     User->>App: Capture/Upload Room Image
     App->>Gemini: Send Image payload + Prompt (structured output request)
-    Note over Gemini: Analyze spatial layout,<br/>detect furniture, calculate volume
+    Note over Gemini: Analyze spatial layout,<br>detect furniture, calculate volume
     Gemini-->>App: Return Structured JSON (items, volume, risk flags)
-    App->>Price: Feed calculated volume, items & property details
-    Note over Price: Calculate Base Fare, Distance,<br/>Floor Penalty & Add-ons
+    App->>Price: Feed calculated volume, items and property details
+    Note over Price: Calculate Base Fare, Distance,<br>Floor Penalty and Add-ons
     Price-->>App: Return dynamic itemized quote
-    User->>App: Approve Quote & Confirm Booking
-    App->>DB: Write User Profile, Booking & Inventory Manifest
+    User->>App: Approve Quote and Confirm Booking
+    App->>DB: Write User Profile, Booking and Inventory Manifest
 ```
 
 #### Detailed Ingestion Pipeline
