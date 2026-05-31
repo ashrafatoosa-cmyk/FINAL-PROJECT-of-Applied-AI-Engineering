@@ -3,6 +3,9 @@
 # dependencies
 /node_modules
 /.pnp
+/*.zip
+/__pycache__
+/*.pkl
 .pnp.*
 .yarn/*
 !.yarn/patches
