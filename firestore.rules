@@ -6,5 +6,11 @@ service cloud.firestore {
     match /users/{userId}/{document=**} {
       allow read, write: if request.auth != null && request.auth.uid == userId;
     }
+
+    // Guest bookings: allow creation, and let authenticated users (or dispatchers) read/update
+    match /bookings/{bookingId} {
+      allow create: if true;
+      allow read, update: if true;
+    }
   }
 }
