@@ -29,43 +29,21 @@ MoveMate Pro is designed with a dual-environment architecture to serve different
 
 These environments share a unified design language but are structurally separated to ensure maximum security for user data while maintaining blazing-fast load times for public marketing pages.
 
-### 🗃️ Database Schema & Data Models
+### 🗃️ Simplified Schema & Relationships
 
-To ensure clean engineering structure and reliable data mapping, Firestore collections follow a highly structured entity relationship model:
+Firestore collections follow a highly structured entity relationship model, designed for real-time synchronization and rapid lookups:
 
 ```mermaid
 erDiagram
-    USERS ||--o{ BOOKINGS : places
-    USERS {
-        string uid PK
-        string email
-        string displayName
-        string photoURL
-        string role
-        timestamp createdAt
-    }
-    BOOKINGS ||--|| FLEET_ASSIGNMENTS : monitored_by
-    BOOKINGS {
-        string id PK
-        string userId FK
-        string status
-        object pickupAddress
-        object dropoffAddress
-        array inventoryItems
-        float totalVolume
-        float price
-        timestamp scheduledDate
-        timestamp createdAt
-    }
-    FLEET_ASSIGNMENTS {
-        string id PK
-        string bookingId FK
-        string vehicleId FK
-        string status
-        array activeCoordinates
-        timestamp lastUpdated
-    }
+    USERS ||--o{ BOOKINGS : "places moves"
+    BOOKINGS ||--|| INVENTORIES : "defines items"
+    BOOKINGS ||--o| FLEET : "monitored by"
 ```
+
+* **`users` (Collection)**: Stores basic Google Auth profiles (UID, Email, Role).
+* **`bookings` (Collection)**: Tracks active move details (Location, Status, Pricing), referenced by `userId`.
+* **`inventories` (Nested/Sub-collection)**: Logs the AI-detected items and estimated cubic volume ($m^3$).
+* **`fleet` (Collection)**: Houses real-time vehicle coordinates, driver status, and telemetry streams.
 
 ---
 
